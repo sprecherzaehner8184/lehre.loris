@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>187</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <script src="../../css/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+<!--Navbar-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">Home Lehre</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!--Titel-->
+    <div class="container mt-3">
+        <h1>187 - ICT Arbeitsplatz und Betriebssystem in Betrieb nehmen</h1>
+        <hr>
+<!--Inhaltsverzeichnis-->
+        <a href="#1">Microprozessor und CPU</a>
+        <br>
+        <a href="#2">Schnittstellen</a>
+        <br>
+        <a href="#3">Aufgaben Betriebssystem</a>
+        <br>
+        <a href="#4">Rechtliches zur Softwarenutzung</a>
+        <br>
+        <a href="#5">Ergonomie</a>
+        <br>
+        <a href="#6">Dateisystem</a>
+        <br>
+        <a href="#7">Hilfreiche Software</a>
+        <br>
+        <a href="#8">Installation OS</a>
+        <br>
+        <a href="#9">Handout</a>
+        <hr>
+<!-- Inhalt-->
+        <p>Die Hauptfunktion jedes Rechnersystems basiert auf dem EVA-Prinzip:</p>
+        <p style="color: blue;"><b>Eingabe -> Verarbeitung -> Ausgabe</b></p>
+        <h2 id="1">Microprozessor und CPU</h2>
+        <p>
+            Sie bestehen aus komplexen Anforderungen an elektrische Schaltkreise. Es ist möglich auf einem
+            Chip ein komplettes Steuer- und Rechenwerk aufzubauen. Der Kern des Mikroprozessor ist die CPU
+            (Central Processing Unit). Um ein Rechner funktionstüchtig zu machen werden folgende Komponenten
+            benötigt:
+        </p>
+        <ul>
+            <li>RAM</li>
+            <li>Festplatte (SSD und HDD)</li>
+            <li>Grafikkarte</li>
+            <li>Netzteil</li>
+            <li>Mainboard</li>
+            <li>Netzwerkkarte</li>
+            <li>Kabel</li>
+        </ul>
+        <p>
+            Um zu kommunizieren sind Peripheriebausteine nötig, die Signale erfassen und ausgeben.
+            Ein- und Ausgabeeinheiten.
+        </p>
+        <img src="../../img/187/Micro-CPU.png" alt="Micro-CPU" width="70%">
+        <h2 id="2">Schnittstellen</h2>
+        <img src="../../img/187/Schnittstellen.png" alt="Schnittstellen von Computer" width="60%">
+        <table class="table table-striped">
+            <tr>
+                <td>1</td>
+                <td>USB 2.0 Typ A</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>PS/2 (Maus und Tastatur)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>BGA</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>DVI</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>USB 2.0 Typ A</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>HDMI</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>USB 3.0 Typ A</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td> LAN RJ-45</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>USB 3.0 Typ A</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Optical Digital Audio Output</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Mikrofon</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Kopfhörer</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>AUX-IN</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Center Subwoofer</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Surround L/R</td>
+            </tr>
+        </table>
+        <h2 id="3">Aufgaben Betriebssystem</h2>
+        <p>
+            <b>Aufbau</b><br>
+            Ein OS besitzt mehrere logische Schichten. Jede Schicht stellt "Dienste" zur Verfügung, d.h.
+            dass eine Schicht die Funktionen der nächstniedrigen Schicht aufrufen kann und der nächsthöheren
+            Schicht überstellen kann. Die Schnittstelle (BIOS / UEFI) kommuniziert direkt mit der Hardware.
+            Alle Schichten sind hardwareunabhängig.
+        </p>
+        <img src="../../img/187/Aufbau OS.png" alt="Aufbau OS" width="30%">
+        <p>
+            <b>Partitionierung</b><br>
+            Um ein Betriebssystem sinnvoll zu verwalten und zu sichern, ist es vorteilhaft, dass die
+            Betriebssystemdateien von den Arbeitsdateien getrennt sind. Dies macht man mit der Partitionierung
+            der SDD oder Festplatte. Man kann auch mehrere Partitionierung auf einer Festplatte erstellen.
+            Die erste Partition auf dem Datentr&auml;ger ist die Betriebssystempartition und anschliessend k&ouml;nnen
+            eine oder mehrere Datenpartitionen erstellt werden. Die OS-Partition muss prim&auml;r und aktiv sein.
+        </p>
+        <img src="../../img/187/Partitionen.png" alt="Partitionen" width="80%">
+        <h2 id="4">Rechtliches zur Softwarenutzung</h2>
+        <p>Hier werden einige Begriffe kurz zusammengefasst unten ist eine ausf&uuml;hrlichere Beschreibung vorhanden:</p>
+        <img src="../../img/187/Tabelle Rechtliches.png" alt="Tabelle Rechtliches" width="100%">
+        <p>
+            <b>Software-Lizenz</b><br>
+            Die Herstellung von einer Software erfordert hoher Sach- und Personalressourcen. Die Kosten die anfallen
+            werden sp&auml;ter &uuml;ber den Verkaufspreis der Software gedeckt. Im Lieferumfang der Software ist eine
+            Lizenzierungsvereinbarung enthalten, die man akzeptieren muss um die Software vollst&auml;ndig nutzen zu k&ouml;nnen.
+            Inhalt dieser Vereinbarung ist unter anderem ein Kopierverbot. Wird Software auf einem Netzwerk-Server
+            bereitgehalten, dann muss meist jeden Benutzer, der auf die Software zugreift, eine weitere Lizenz erworben haben.
+        </p>
+        <p>
+            <b>Raubkopien</b><br>
+            Die teilweise hohen Preise f&uuml;r Software f&uuml;hren dazu, dass die Software einmal gekauft und anschliessend
+            unzul&auml;ssigerweise kopiert und weitergegeben wird. Die Software-Industrie wiederum argumentiert, dass die
+            hohen Preise gerechtfertigt seien, um die Verluste durch Raubkopien zu ersetzen.
+        </p>
+        <p>
+            <b>Shareware</b><br>
+            Unter Shareware werden Programme verstanden, die &uuml;ber das Internet oder CDs aus Computerzeitschriften
+            verbreitet werden und in der Regel frei kopierbar sind. Mit der kostenlosen Weitergabe
+            dieser Software ist die Aufforderung verbunden, nach Ablauf einer Probezeit eine Lizenzgeb&uuml;hr
+            an den Autor der Software zu bezahlen. Die Probezeit kann dazu genutzt werden, das Programm
+            zu testen. Die Zahlungsmoral am Ende der Probezeit l&uml;sst in der Regel zu wünschen
+            übrig: Sch&auml;tzungen gehen davon aus, dass nur 5 % bis 7 % der Nutzer der Zahlungsaufforderung
+            nachkommen. <br>
+            Manche Autoren von Shareware verteilen deshalb eine Verion der Software, die
+            <ul>
+                <li>nich die volle Funktionalit&auml;t umfasst.</li>
+                <li>in verschiedenen Hinweisfenstern oder auf Ausdrucken darauf hinweist, dass diese Verion noch ich nicht lizenziert ist.</li>
+                <li>nach Ablauf der Probezeit nicht mehr startet.</li>
+            </ul>
+            Erst nach Begleichung der Shareware-Geb&uuml;hr erh&auml;lt der Benutzer einen Schl&uuml;ssel, mit dem er die volle
+            Funktionalit&auml;t des Programms herstellen bzw. die unerw&uuml;nschten Hinweisfenster ausblendenkann.
+        </p>
+        <p>
+            <b>Freeware</b><br>
+            Freeware bezeichnet Programme, die kostenlos genutzt und weiterverteilt werden k&ouml;nnen. Solche Programme
+            finden ihre Verbreitung vornehmlich &uuml;ber das Internet oder &uuml;ber CDs, die regelm&auml;ssig verschiedenen
+            Fachzeitschriften beiliegen.
+        </p>
+        <p>
+            <b>Public Domain</b><br>
+            Unter dem Begriff Public Domain werden Programme verstanden, die der &Ouml;ffentlichkeit "geh&ouml;ren".
+            Diese Programme sind frei zug&auml;nglich, jederzeit kopier- und ver&auml;nderbar und unterliegen keinen Urheberrechten.
+            Die Gefahr, bei der Verwendung von Free- und Shareware oder Public- Domain-Produkten Ihren Rechner mit Viren
+            zu infizieren, ist h&ouml;her als bei Standard-Software, denn diese Produkte werden zum Teil genutzt, um Viren zu
+            verbreiten.
+        </p>
+        <h2 id="5">Ergonomie</h2>
+        <p>
+            Ergonomie bedeutet: Die Wissenschaft der optimalen Arbeitsbedingungen der Menschen, und auch Bedienung durch den Menschen.
+        </p>
+        <p>
+            <b>Raumklima</b><br>
+            Das Raumklima wird durch Werte wie Temperatur, relative Luftfeuchtigkeit und die Geschwindigkeit der
+            Luftbewegung bestimmt. Ein schlechtes Raumklima tr&auml;gt zu Erk&auml;ltungskrankheiten,
+            Bindehautentz&uuml;ndungen, trockenen Schleimh&auml;uten, Allergien, &Uuml;belkeit, Schwindelgef&uuml;hlen,
+            Konzentrationsst&ouml;rungen und Erm&uuml;dungserscheinungen bei. Kriterien f&uuml;r ein gutes Raumklima sind:
+        </p>    
+        <ul>
+            <li>Raumtemperatur zwischen 20° und 26° Celsius</li>
+            <li>Luftfeuchtigkeit zwischen 50 und 65%</li>
+            <li>keine Zugluft</li>
+            <li>keine Schadstoffe</li>
+            <li>keine erh&ouml;hte W&auml;rmebel&auml;stung durch B&uuml;roger&auml;te, zu &ouml;ffnende Fenster mit Sonnenschutzvorrichtungen</li>
+        </ul>
+        <p>
+            <b>Pflanzen im B&uuml;ro</b><br>
+            Pflanzen werden nicht nur von den meisten Menschen als sch&ouml;n empfunden. Sie sind auch in anderer Weise
+            effizient bei der Gestaltung des PC-Arbeitsplatzes, denn sie wirken beruhigend auf die Psyche,
+            erh&ouml;hen die Luftfeuchtigkeit und entgiften die Raumluft. Das gilt sowohl f&uuml;r den privaten Arbeitsbereich
+            als auch f&uuml;r B&uuml;ros. Gerade grossbl&auml;ttrige Pflanzen verdunsten grosse Mengen Wasser und sind lebende
+            Filter f&uuml;r verschiedenste Luftschadstoffe. Pflanzen und spezielle Mikroorganismen k&ouml;nnen den Giftmix teilweise
+            entsch&auml;rfen. Einige Pflanzen sind in der Lage bis zu vier Mikrogramm Formaldehyd pro Kilogramm Blattmasse
+            aufzunehmen und abzubauen.
+        </p>
+        <p>
+            Notwendig ist in jedem Fall, die Raumluft in leichter Bewegung zu halten. Stehende Luft senkt die Wirksamkeit
+            pflanzlicher Filter auf bis zu einem Zehntel des eigentlichen Potenzials. Eine der wesentlichen Ursachen f&uuml;r
+            Krankheiten, die w&auml;hrend der B&uuml;roarbeit verursacht werden, ist trockene Raumluft. Insbesondere im Winter,
+            wenn die Infektionsgefahr durch andere Ursachen erh&ouml;ht ist, wirken sich Heizung oder Klimaanlagen
+            zus&auml;tzlich negativ aus. Wichtig ist dann die regelm&auml;ssige L&uuml;ftung bei weit ge&ouml;ffnetem Fenster.
+            Das sorgt f&uuml;r Frischluftzufuhr und vermindert elektrostatische Aufladung.
+        </p>
+        <img src="../../img/187/Pflanzen.png" alt="Pflanzen im B&ouml;ro" width="60%">
+        <p>
+            <b>L&auml;rm</b><br>
+        </p>
+        <p>
+            <b>Beleuchtung</b><br>
+        </p>
+        <h2 id="6">Dateisystem</h2>
+        <p>
+            <b>Allgemein</b><br>
+        </p>
+        <h2 id="7">Hilfreiche Software</h2>
+        <p>
+            <b>Task-Manager</b><br>
+        </p>
+        <p>
+            <b>Ger&auml;te-Manager</b><br>
+        </p>
+        <p>
+            <b>Computerverwaltung</b><br>
+        </p>
+        <p>
+            <b>Dateitr&auml;gerbereinigung</b><br>
+        </p>
+        <p>
+            <b>Systeminformationen</b><br>
+        </p>
+        <p>
+            <b>PowerShell</b><br>
+        </p>
+        <p>
+            <b>Ausf&uuml;hren</b><br>
+        </p>
+        <p>
+            <b>cmd</b><br>
+        </p>
+        <h2 id="8">Installation OS</h2>
+        <p>
+            <b>Vorbereitung</b><br>
+        </p>
+        <p>
+            <b>Nachbereitung</b><br>
+        </p>
+        <h2 id="9">Handout</h2>
+        <iframe src="../../pdf/Handout/Handout-187.pdf" width="100%" height="1000px"></iframe>
+    </div>
+<!--Footer-->
+      <div class="mt-5 p-4 bg-dark text-white text-center">
+        <p>© 2022 Loris Sprecher</p>
+      </div>    
+  </body>
+</html>

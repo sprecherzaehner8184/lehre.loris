@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <script src="../../css/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+<!--Navbar-->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../Startseite-Lehre.html">Home Lehre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<!--Titel-->
+        <div class="container mt-3">
+            <h1>NS - Netzwerkservice</h1>
+            <hr>
+<!--Inhaltsverzeichnis-->
+            <a href="#1">ISO/OSI Modell</a>
+            <br>
+            <a href="#2">Protokolle</a>
+            <br>
+            <a href="#3">Befehle cmd</a>
+            <br>
+            <a href="#4">Handout</a>
+            <hr>
+<!-- Inhalt-->
+            <h2 id="1">ISO/OSI Modell</h2>
+            <img src="../../img/NS/OSI-Modell.png" alt="OSI-Modell" width="100%">
+            <p>
+                <b>Header</b><br>
+                Mit dem Header werden zus&auml;tzliche Daten zur Steuerung und Kontrolle der Verbindung angef&uuml;gt.
+                Je gr&ouml;sser der Header ist, desto mehr Bytes m&uuml;ssen &uuml;bertragen werden, dann spricht man
+                von einem overhead.
+            </p>
+            <p>Die TCP Schicht und die IP Schicht stellen einen Header (Protokollkopf) voran.</p>
+            <img src="../../img/NS/Header.png" alt="100%">
+            <p>
+                <b>Ports</b><br>
+                Die Anwendungen setzen direkt auf TCP und UDP auf. Die Endpunkte werden als Ports bezeichnet.
+                Sie dienen als Schnittstelle resp. Adresse zu den Anwendungen. Die TCP und UDP verwenden eine eigene
+                Port-Nummerierung. Die Nummern lassen sich in drei Bereiche aufteilen.
+            </p>
+            <table class="table table-striped">
+                <tr>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>255</td>
+                    <td>Standarddienste, well known services</td>
+                </tr>
+                <tr>
+                    <td>256</td>
+                    <td>-</td>
+                    <td>1023</td>
+                    <td>Betriebssystemspezifische Dienste</td>
+                </tr>
+                <tr>
+                    <td>1024</td>
+                    <td>-</td>
+                    <td>65535</td>
+                    <td>freier Bereich f&uuml;r den Anwender</td>
+                </tr>
+            </table>
+            <p>Hier sind einige Beispiele f&uuml; Portnummern:</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Dienst</th>
+                        <th>Port</th>
+                        <th>Protokoll</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>frp</td>
+                        <td>21</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>telnet</td>
+                        <td>23</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>smtp</td>
+                        <td>25</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>http</td>
+                        <td>80</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>rlogin</td>
+                        <td>531</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>rpc</td>
+                        <td>111</td>
+                        <td>UDP</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 id="2">Protokolle</h2>
+            <img src="../../img/NS/Tabelle Protokolle.png" alt="Tabelle Protokolle" width="80%">
+            <h4>IP (Internet Protokoll)</h4>
+            <p><b>Funktionen und Eigenschaften</b></p>
+            <ul>
+                <li>Definition von Datengrammen (Pakete) als kleinstes &Uuml;bertragungseinheit</li>
+                <li>Definition des Adressierungsschemas (IP-Adresse)</li>
+                <li>&Uuml;bermittlung der Daten von der Transportebene zur Netzwerkschicht</li>
+                <li>Routing von Datengrammen durch das Netz</li>
+                <li>Fragmentierung und Zusammensetzung von Datengrammen</li>
+            </ul>
+            <p><b>IP-Header</b></p>
+            <img src="../../img/NS/IP-Header.png" alt="IP-Header" width="60%">
+            <table class="table table-striped">
+                <tr>
+                    <th>Version</th>
+                    <td>
+                        Versionsnummer. Damit werden unterschiedliche Versionen auf dem glei- chen Netz erm&ouml;glicht.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Length</th>
+                    <td>L&auml;nge des Headers</td>
+                </tr>
+                <tr>
+                    <th>Type of Service</th>
+                    <td>Spezifikation der verschiedenen Dienstvarianten.</td>
+                </tr>
+                <tr>
+                    <th>Total Lenght</th>
+                    <td>Paketl&auml;nge, Header und Daten.</td>
+                </tr>
+                <tr>
+                    <th>Identification</th>
+                    <td>Zuordnung eines Fragments zu einem bestimmten Datagramm.</td>
+                </tr>
+                <tr>
+                    <th>Flags</th>
+                    <td>DF: Dont's Fragment, MF: More Fragments</td>
+                </tr>
+                <tr>
+                    <th>Fragment Offset</th>
+                    <td>Gibt die Position eines Fragmentes im Datagramm an.</td>
+                </tr>
+                <tr>
+                    <th>Time of Live</th>
+                    <td>
+                        Z&auml;hler zur Begrenzung der Lebensdauer. Wird von jedem Netzknoten dekrementiert. Sobald der
+                        Z&auml;hler Null ist, wird das Paket verworfen und der Absender benachrichtigt. Damit wird verhindert,
+                        dass Pakete endlos im Netz umherwandern.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Protocol</th>
+                    <td>
+                        Transportprotokollnummer, an welches das Paket weitergeleitet werden muss. Diese Nummern sind einheitlich
+                        (TCP: 6, UDP: 17).
+                    </td>
+                </tr>
+                <tr>
+                    <th>Header Checksum</th>
+                    <td>
+                        Pr&uuml;fsumme des Headers. Die Nutzdaten des IP-Datagramms werden aus Effizienzgr&uuml;nden nicht
+                        gepr&uuml;ft! (Aufgabe das Transportprotokolls).
+                    </td>
+                </tr>
+                <tr>
+                    <th>Source Address</th>
+                    <td>IP-Adresse des Senders.</td>
+                </tr>
+                <tr>
+                    <th>Destination Address</th>
+                    <td>IP-Adresse des Empf&auml;nger.</td>
+                </tr>
+                <tr>
+                    <th>Options/Padding</th>
+                    <td>M&ouml;gliche Erweiterung der Funktionalit&auml;t.</td>
+                </tr>
+            </table>
+            <p>
+                <b>IP-Adressen</b><br>
+                Die Aktuelle Version von IP ist die Version 4, also <b>IPv4</b>. Die Adressen werden unabh&auml;ngig
+                von der Rechnerhardware einem bestimmten host zugeordnet, dabei werden 32-Bit Adressen verwendet.
+                Diese werden mit Hilfe der Subnetzmaske in den host und network aufgeteilt.
+            </p>
+            <img src="../../img/NS/IP-Klassen1.png" alt="IP-Klassen Grafik" width="60%">
+            <br>
+            <img src="../../img/NS/IP-Klassen2.png" alt="IP-Klassen Tabelle" width="60%">
+            <p>
+                Wenn alle Host-Bytes den Wert 255 haben, dann handelt es sich um eine Broadcast-Adresse. 
+                Dies wird ben&ouml;tigt um die Hosts in dem Netzwerk zu adressieren.
+            </p>
+            <p>Die folgenden Adressbereiche sind für die Nutzung in privaten Netzen reserviert:</p>
+            <table class="table table-striped">
+                <tr>
+                    <td>Klasse A:</td>
+                    <td>10.0.0.0</td>
+                    <td>bis</td>
+                    <td>10.255.255.254</td>
+                </tr>
+                <tr>
+                    <td>Klasse B:</td>
+                    <td>172.16.0.0</td>
+                    <td>bis</td>
+                    <td>172.31.255.254</td>
+                </tr>
+                <tr>
+                    <td>Klasse C:</td>
+                    <td>192.168.0.0</td>
+                    <td>bis</td>
+                    <td>192.168.255.254</td>
+                </tr>
+            </table>
+            <p>Die Adress <b>0.0.0.0</b> wir als Lokalhost bezeichnet.</p>
+            <p>
+                <b>127</b> steht f&uuml;r den Loopback Device eines Rechners. Sendet man ein Pakt an eine Adresse der Form
+                <b>127.xxx.xxx.xxx</b>, so werden sie nicht auf eine Leitung ausgegeben, sondern sie werden lokal verarbei- tet.
+                Dies wird oft zur Fehlerbehebung genutzt.
+            </p>
+            <p>
+                <b>Verknappung der IP-Adressen</b><br>
+                In den Klassen A, B und C werden eine grosse Anzahl Adressen verschwendet. Dieser Verknappung
+                versucht man durch verschiedene Massnahmen wie Bildung von Subnetzen innerhalb der Klasse, DHCP oder
+                NAT entgegenzuwirken. Trotz allen Massnahmen wird eine Abl&ouml;sung der IP-Protokollver- sion von
+                IPv4 auf IPv6 irgendwann anstehen. Die wesentlichen Modifikationen von IPv6 ist die erwei- terte
+                Adressgr&ouml;sse von 32 auf 128 Bit.
+            </p>
+            <p>
+                <b>Fragmentierung</b><br>
+                Um Pakete jeder Art verschickt werden k&ouml;nnen, muss IP dazu in der Lage sein, die Gr&ouml;sse dem
+                jewei- ligen Netz anzupassen. Jedes Netzwerk hat eine sogenannte MTU (Maximum Transfer Unit), die be-
+                zeichnet, dass nur Pakete bis zu einer festgelegten Gr&ouml;sse verschickt werden können. Ein Ethernet-
+                Pakete dar die Gr&ouml;sse von 1500 Byte nicht &uuml;berschreiten. Falls die MTU doch &uuml;berschritten
+                wird, so muss das Paket in kleine Pakete aufgeteilt werden.
+            </p>
+            <p>
+                Es wird ein Verfahren angewendet, dass bereits auf der IP-Schicht kleiner Pakete erzeugt. Dies wird
+                Fragmentierung genannt. Unter Fragmentierung versteht man, dass das IP-Protokoll in der Lage sein muss,
+                die empfangene Pakete zu zerteilen um sie weiter über ein Teilnetz bis hin zum Zielhost zu &uuml;bertragen.
+                Jedes empfangende IP muss die Fragmente wieder zum urspr&uuml;nglichen Paket zusammenf&uuml;gen.
+            </p>
+            <p>
+                <b>Statisch</b><br>
+                Die sind fest bestimmt und &auml;ndern sich nicht automatisch. Das World Wide Web (WWW) ben&ouml;tigt
+                statische IP-Adressen, weil die Webseiten immer unter der gleichen IP-Adressen erreichbar sein
+                m&uuml;ssen. Die statische IP-Adressen sind vergleichbar mit einer Telefonnummer. Die wird auch nur selten gewechselt. Drucker und Computer haben in einem Heimnetzwerk auch statische IP-Adressen.
+            </p>
+            <p>
+                <b>Dynamisch</b><br>
+                Dynamisch ist das am meist gen&uuml;tze. Sie k&ouml;nnen sich jederzeit &auml;ndern. Verbindet man sich
+                mit einem Router so vergibt er eine IP-Adresse die niemand anders auf der Welt nutzt. Die
+                &Auml;ndeurungen erfolgt in unregelm&auml;ssigem Abstand.
+            </p>
+            <img src="../../img/NS/IP-Fragmentierung.png" alt="Fragmentierung" width="60%">
+            <h4>TCP (Transmission Control Protocol)</h4>
+            <p><b>Funktionen/Eigenschaften</b></p>
+            <ul>
+                <li>Definition der TCP-Einheiten, welche Segemente genannt werden.</li>
+                <li>
+                    Zuverl&auml;ssige Verbindungen mittels eines Mechanismus, bei dem das System, welches Daten sendet,
+                    die &Uuml;bertragung der Daten solange wiederholt, bis der Empf&auml;nger der Erhalt der Daten
+                    quittiert bzw. positiv best&auml;tigt wird.
+                </li>
+                <li>
+                    Verbindungsorientiertes Protokoll, bei welchem Verbindungen aufgebaut werden und bis zum Ende der
+                    &Uuml;bertragung aufrechterhalten werden.
+                </li>
+            </ul>
+            <p>
+                TCP teilt Daten in h&ouml;chstes 64 KByte grosse Segmente auf. Jedes dieser Segmente wird als IP-Data-
+                gramm versendet. Wenn die IP-Datagramme bei dem Rechner ankommen, werden diese an TCP weitergeleitet und
+                wieder zu den urspr&uuml;nglichen Bytestr&ouml;men zusammengesetzt. Die IP-Schicht gibt allerdings keine
+                Gew&auml;hr daf&uuml;r, dass die Datengramme richtig zugestellt werden. Es ist deshalb die Aufgabe von
+                TCP f&uuml;r eine erneute &Uuml;bertragung der Daten zu sorgen. Es ist aber auch m&ouml;glich, dass die
+                IP-Datagramme zwar korrekt ankommen, aber in der falschen Reihenfolge sind. In diesem Fall muss TCP
+                daf&uuml;r sorgen, dass die Daten wieder in die richtige Reihenfolge gebracht werden. Hier f&uuml;r
+                verwendet TCP eine Sequenznummer und eine Best&auml;tigungsnummer.
+            </p>
+            <p><b>TCP-Header</b></p>
+            <img src="../../img/NS/TCP-Header.png" alt="TCP-Header" width="60%">
+            <table class="table table-striped">
+                <tr>
+                    <th>Source Port</th>
+                    <td>Portnummer des Senders</td>
+                </tr>
+                <tr>
+                    <th>Destination Port</th>
+                    <td>Portnummer des Empfängers</td>
+                </tr>
+                <tr>
+                    <th>Sequence Number</th>
+                    <td>Sequenznummer</td>
+                </tr>
+                <tr>
+                    <th>Acknowledgement Nbr</th>
+                    <td>
+                        Quittungs- resp. Best&auml;tigungsnummer Die Sequenznummer gilt in Senderichtung, die
+                        Best&auml;tigungsnummer f&uuml;r Empfangsquittungen. Jeder der beiden TCP-Verbindungspartner
+                        generiert beim Verbindungsaufbau eine Sequenznummer, die sich w&auml;hrend des Zeitraums der
+                        Verbindung nicht wiederholen darf. Dies ist allerdings durch den grossen Zahlenraum von 232
+                        wohl ausreichend gesichert. Diese Nummern werden bei Verbindungsaufbau ausgetauscht und
+                        gegenseitig quittiert.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Offset</th>
+                    <td>Gibt an wo die Daten im Segment beginnen.</td>
+                </tr>
+                <tr>
+                    <th>
+                        Flags<br>
+                        (U, A, P, R, S, F)
+                    </th>
+                    <td>
+                        U (urgent) ist gesetzt, wenn Urgent Pointer verwendet wird.<br>
+                        A (acknowlegde) ist gesetzt, wenn Quittungsnummer g&uuml;ltig ist.<br>
+                        P (push) Empf&auml;nger soll Daten ohne Pufferung weitergeben.<br>
+                        R (reset) Zur&uuml;cksetzen der Verbindung bei Fehlern.<br>
+                        S (synchronize) Synchronisierung beim Verbindungsaufbau.<br>
+                        F (finish) Verbinungsabbau
+                    </td>
+                </tr>
+                <tr>
+                    <th>Window</th>
+                    <td>Gibt an, f&uuml; wieviele Byte der Empf&auml;nger Platz hat.</td>
+                </tr>
+                <tr>
+                    <th>Checksum</th>
+                    <td>Pr&uuml;fungssumme f&uuml;r Header und Daten.</td>
+                </tr>
+                <tr>
+                    <th>Urgent Pointer</th>
+                    <td>
+                        Dieser Offset zeigt auf wichtige Daten innerhalb des Segmentes, die zuerst gelesen werden sollen.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Options / Padding</th>
+                    <td>M&ouml;gliche Erweiterungen der Funktionalit&auml;t.</td>
+                </tr>
+            </table>
+            <h4>UDP (User Data Protocol)</h4>
+            <p><b>Funktionen/Eigenschaften</b></p>
+            <p>
+                -
+            </p>
+            <p>
+                -
+            </p>
+            <img src="../../img/NS/UDP-Header.png" alt="UDP-Header" width="60%">
+            <h4>DHCP (Dynamic Host Configuration Protocol)</h4>
+            <p>
+                <b>Statische Zuordnung</b><br>
+                -
+            </p>
+            <p>
+                <b>Dynamische Zuordnung</b><br>
+                -
+            </p>
+            <h2 id="3">Befehle cmd</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Befehl</th>
+                        <th>Beschreibung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ping</td>
+                        <td>
+                            Mit dem Befehl "ping" sendet man eine Anforderung &uuml;ber das Netzwerk an ein bestimmtes
+                            Ger&auml;t. Ein erfolgreicher Ping f&uuml;hrt zu einer positiven Antwort.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ipconfig</td>
+                        <td>
+                            Mit dem Befehl "ipconfig" erhaltet man eine &Uuml;bersicht &uuml;ber alle Daten der
+                            Netzwerkschnittstellen. Dazu geh&ouml;rt:<br>
+                            IPv4, IPv6, Subnetzmakse, Standard-Gateway usw.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>netstat</td>
+                        <td>
+                            Mit dem Befehl "netstat" erzeugt man eine Anzeige des Netzwerkstatus und Protokollstatistik.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>arp</td>
+                        <td>
+                            Mit dem Befehl "arp" lassen sich die MAC-Adressen, der aktiven Ger&auml;te im lokalen Netz
+                            anzeigen.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>nslookup</td>
+                        <td>
+                            Mit dem Befehl "nslookup" kann man eine IP-Adresse in einen Namen umwandeln und auch
+                            zur&uuml;ck.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>tracert</td>
+                        <td>
+                            Mit dem Befehl "tracert" l&auml;sst sich der Weg eines IP-Pakets zu einem bestimmten Ziel
+                            nachverfolgen.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 id="4">Handout</h2>
+            <iframe src="../../pdf/Handout/Handout-NS.pdf" width="100%" height="1000px"></iframe>
+        </div>
+<!--Footer-->
+        <div class="mt-5 p-4 bg-dark text-white text-center">
+            <p>© 2022 Loris Sprecher</p>
+        </div>    
+    </body>
+</html>

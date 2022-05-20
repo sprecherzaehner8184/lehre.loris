@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DB</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <script src="../../css/bootstrap.bundle.min.js"></script>
+        </head>
+    <body>
+<!--Navbar-->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../Startseite-Lehre.html">Home Lehre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<!--Titel-->
+        <div class="container mt-3">
+            <h1>DB - Datenbanken</h1>
+            <hr>
+<!--Inhaltsverzeichnis-->
+            <a href="#1">Das relationale Datenmodell</a>
+            <br>
+            <a href="#2">ERD</a>
+            <br>
+            <a href="#3">-</a>
+            <br>
+            <a href="#4">Handout</a>
+            <hr>
+<!-- Inhalt-->
+            <h2 id="1">Das relationale Datenmodell</h2>
+            <h3>Grundbegriffe der Datenmodellierung</h3>
+            <p>
+                Bevor der Ansatz der relationalen Datenmodellierung erkl&auml;rt wird, ist eine Kl&auml;rung von
+                Begriffen notwendig. Zu diesem Zweck stellen wir uns eine "manuelle" Datenbank von Lernenden mit
+                Karteikarten vor. Auf einer leeren Karteikarte befinden sich bereits Beschriftungen und Felder,
+                in welchen die variablen Informationen der Lernenden eingetragen werden k&ouml;nnen.
+            </p>
+            <img src="../../img/DB/Begriffe der Datenmodellierung.png" width="60%">
+            <p>
+                Alle Lernenden werden auf den Karteikarten mit den gleichen Eigenschaften wie Nummer, Name,
+                Vorname etc. erfasst. Diese Eigenschaften werden als <b>Attribute</b> bezeichnet. Die Menge aller
+                Lernenden heisst <b>Entit&auml;tstyp</b> und eine konkrete Auspr&auml;gung eines Lernenden (z.B. der
+                Lernende "Hans Muster") wird als <b>Entit&auml;t</b> bezeichnet. Eine Entit&auml;t ist also ein
+                individuelles und <b>eindeutig</b> identifizierbares Exemplar von Dingen, Personen, Begriffen
+                aus der realen Welt oder auch aus der Vorstellungswelt.
+            </p>
+            <p>
+                Die Aussage, dass eine Entit&auml;t ein eindeutig identifizierbares Objekt darstellt, f&uuml;hrt
+                dazu, dass es auch ein Attribut (oder eine Zusammenfassung mehrerer Attribute) gibt, mit dem die
+                konkrete Entit&auml;t tats&auml;chlich identifiziert wird. Dieses Attribut wird als
+                <b>Identifikationsschl&uuml;ssel</b> bezeichnet. Im Beispiel des Entit&auml;tstyp Lernender
+                k&ouml;nnte das typischerweise die Nummer des Lernenden sein.
+            </p>
+            <p>Identifikationsschl&uuml;ssel m&uuml;ssen folgende Kriterien erf&uuml;llen:</p>
+            <table>
+                <tr>
+                    <th>Eindeutigkeit</th>
+                    <td>
+                        Der Wert des Identifikationsschl&uuml;ssels darf in einem Entit&auml;tstyp nur einmal vorkommen.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Lebensdauer</th>
+                    <td>
+                        Der Wert des Identifikationsschl&uuml;ssels darf sich w&auml;hrend der ganzen Lebensdauer
+                        einer Entit&auml;t nicht ver&auml;ndern. Ein Lernender beh&auml;lt seine Nummer solange er
+                        im System erfasst ist. Wenn sich die Nummer &auml;ndern w&uuml;rde, erg&auml;ben sich
+                        Probleme mit den alten Eintr&auml;gen und Akten, da diese nicht mehr zuordenbar w&auml;ren,
+                        weil die alte Nummer nicht mehr existiert.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sofortige Vergabe</th>
+                    <td>
+                        Der Identifikationsschl&uuml;ssel muss sofort beim Entstehen einer Entit&auml;t im System
+                        eingegeben oder automatisch vergeben werden. Es darf keinen Lernenden ohne Nummer geben,
+                        weil sonst eine Zuordnung von Eintr&auml;gen oder Akten nicht m&ouml;glich w&auml;re.
+                    </td>
+                </tr>
+            </table>
+            <p>
+                Die Begriffe Entit&auml;tstyp, Entit&auml;t, Attribut und Identifikationsschl&uuml;ssel sind die
+                Grundbegriffe der Datenmodellierung. Es handelt sich dabei um abstrakte, d.h. allgemein
+                g&uuml;ltige Begriffe. Je nach dem, mit welchem Modell eine Datenbank dann realisiert wird, werden
+                in der Praxis aber etliche Synonyme verwendet. Diese werden hier zum besseren Verst&auml;ndnis der
+                folgenden Erkl&auml;rungen des relationalen Datenmodells bereits aufgef&uuml;hrt:
+            </p>
+            <table>
+                <tr>
+                    <th>Entit&auml;tstyp</th>
+                    <td>entity-type (oder kurz entity), Klasse, Entit&auml;tsklasse, Tabelle, Table</td>
+                </tr>
+                <tr>
+                    <th>Entit&auml;t</th>
+                    <td>entity, Objekt, Exemplar, Datensatz, Zeile, Tupel, Record</td>
+                </tr>
+                <tr>
+                    <th>Attribut</th>
+                    <td>Eigenschaft, Feld, Spalte</td>
+                </tr>
+            </table>
+            <h3>Der realationale Ansatz</h3>
+            <p>
+                Im relationalen Modell werden die Entit&auml;tstypen als <b>Tabellen</b> abgebildet,
+                deren Spalten die Attribute und deren Zeilen die einzelnen Entit&auml;ten oder
+                Datens&auml;tze darstellen. Eine Tabelle besteht aus einer Menge von Datens&auml;tzen
+                (Zeilen). Jeder Datensatz besteht aus den gleichen Attributen (Spalten, Felder). Die
+                eindeutige Identifikation eines Datensatzes erfolgt &uuml;ber den
+                Identifikationsschl&uuml;ssel (eindeutig, sofort vergeben, unver&auml;nderbar),
+                welcher auch als <b>Prim&auml;rschl&uuml;ssel</b> (Primary-Key) bezeichnet wird.
+            </p>
+            <img src="../../img/DB/der relationale ansatz 1.png" width="60%">
+            <p>
+                Um Daten m&ouml;glichst redundanzfrei zu speichern, besteht ein Modell im Normalfall aus mehreren
+                Entit&auml;tsmengen resp. Tabellen. Am Beispiel oben kann so verhindert werden, dass die Information
+                bez&uuml;glich eines Lehrberufes bei Lernenden mit dem gleichen Lehrberuf in der Tabelle Lernende
+                mehrfach und wiederholt gespeichert wird. Diese Tabellen existieren zun&auml;chst unabh&auml;ngig voneinander.
+            </p>
+            <p>
+                Die effektive Zusammengeh&ouml;rigkeit resp. die Zuordnung der Daten zweier Tabellen wird im relationalen
+                Ansatz mit <b>Beziehungen</b> (Relationen, relations) abgebildet. Dazu wird der Prim&auml;rschl&uuml;ssel einer
+                Tabelle als zus&auml;tzliches Attribut in andere Tabellen &uuml;bernommen. Diese werden dort als
+                <b>Fremdschl&uuml;ssel</b> (Foreign-Key) bezeichnet.
+            </p>
+            <img src="../../img/DB/der relationale ansatz 2.png" width="60%">
+            <p>
+                Die Lehrberufsnummer wird hier als Fremdschlüssel in die Tabelle der Lernenden aufge- nommen. Über diese Beziehung wird definiert, dass der Datensatz eines Lernenden mit einem Datensatz eines Lehrberufes verknüpft ist (Hans Muster wurde als Lehrberuf Informatiker zuge- teilt). Umgekehrt kann auch festgestellt werden, welche Lernenden einen bestimmten Lehrberuf ausüben (Hans Muster und Maria Keller sind InformatikerInnen).
+            </p>
+            <h3>Datenintegrit&auml;t</h3>
+            <p>
+                
+            </p>
+            <h2 id="2">ERD</h2>
+            <img src="../../img/DB/ERD Nordwind.png" width="60%">
+            <p>
+                F&uuml;r die Angabe der Kardinalit&auml;ten werden in der Praxis verschiedene Notationen verwendet.
+                Folgende Darstellungen sind neben weiteren gebr&auml;uchlich:
+            </p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>
+                            Die Grafik rechts zeigt die Notationen f&uuml;r die Kardinalit&auml;t, wenn ein Auftrag entweder eine
+                            oder keine Zahlung zur Folge hat.
+                            <br>
+                            <br>
+                            <br>
+                            <b>MIN = 0</b><br>
+                            <b>MAX = 1</b>
+                        </p>
+                    </div>
+                    <div class="col-sm-8">
+                        <img src="../../img/DB/ERD Theorie/1.png" width="60%">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>
+                            Die Grafik rechts zeigt die Notationen f&uuml;r die Kardinalit&auml;t, wenn ein Auftrag immer genau
+                            einem Kunden zugeordnet werden kann.
+                            <br>
+                            <br>
+                            <br>
+                            <b>MIN = 1</b><br>
+                            <b>MAX = 1</b>
+                        </p>
+                    </div>
+                    <div class="col-sm-8">
+                        <img src="../../img/DB/ERD Theorie/2.png" width="60%">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>
+                            Die Grafik rechts zeigt die Notationen f&uuml;r die Kardinalit&auml;t, wenn ein Kunde zeitweise auch
+                            keinen Auftrag haben kann.
+                            <br>
+                            <br>
+                            <br>
+                            <b>MIN = 0</b><br>
+                            <b>MAX = n</b>
+                        </p>
+                    </div>
+                    <div class="col-sm-8">
+                        <img src="../../img/DB/ERD Theorie/3.png" width="60%">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>
+                            Die Grafik rechts zeigt die Notationen f&uuml;r die Kardinalit&auml;t, wenn ein Kunde immer mindestens
+                            einen Auftrag haben muss.
+                            <br>
+                            <br>
+                            <br>
+                            <b>MIN = 1</b><br>
+                            <b>MAX = n</b>
+                        </p>
+                    </div>
+                    <div class="col-sm-8">
+                        <img src="../../img/DB/ERD Theorie/4.png" width="60%">
+                    </div>
+                </div>
+            </div>
+            <h3>Beispiele</h3>
+            <p>
+                Ein Kunde macht keine, eine oder mehrere Bestellungen.<br>
+                Eine Bestellung kann genau einem Kunde zugeordnet werden.<br>
+                <img src="../../img/DB/ERD Beispiele/1.png" width="60%">
+            </p>
+            <p>
+                Eine Bestellung beinhaltet keines, eins oder mehrere Bestelldetails.<br>
+                Ein Bestelldetail geh&ouml;rt genau zu einer Bestellung.<br>
+                <img src="../../img/DB/ERD Beispiele/2.png" width="60%">
+            </p>
+            <p>
+                Ein Bestelldetail beinhaltet einen Artikel.<br>
+                Ein Artikel kann in keinem, einem oder mehreren Bestelldetail vorkommen.<br>
+                <img src="../../img/DB/ERD Beispiele/3.png" width="60%">
+            </p>
+            <p>
+                Ein Lieferant kann keinen, einen oder mehrere Artikel liefern.<br>
+                Der Lieferant eines Artikels ist eindeutig.<br>
+                <img src="../../img/DB/ERD Beispiele/4.png" width="60%">
+            </p>
+            <p>
+                Ein Artikel geh&ouml;rt genau zu einer Kategorie.<br>
+                Eine Kategorie kann keinem, einem oder mehrere Artikel enthalten.<br>
+                <img src="../../img/DB/ERD Beispiele/5.png" width="60%">
+            </p>
+            <p>
+                Ein Mitarbeiter kann keine, eine oder mehrere Bestellungen aufnehmen.<br>
+                Die Bestellung wird durch genau einen Mitarbeiter aufgenommen.<br>
+                <img src="../../img/DB/ERD Beispiele/6.png" width="60%">
+            </p>
+            <p>
+                Eine Bestellung kann &uuml;ber genau eine Versandfirma spediert werden.<br>
+                Eine Versandfirma kann keinen, einen oder mehrere Bestellungen spedieren.<br>
+                <img src="../../img/DB/ERD Beispiele/7.png" width="60%">
+            </p>
+            <h2 id="4">Handout</h2>
+            <iframe src="../../pdf/Handout/Handout-DB.pdf" width="100%" height="1000px"></iframe>
+        </div>
+<!--Footer-->
+        <div class="mt-5 p-4 bg-dark text-white text-center">
+            <p>© 2022 Loris Sprecher</p>
+        </div>    
+    </body>
+</html>
